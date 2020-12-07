@@ -1,4 +1,6 @@
-class Hand
+require_relative 'card'
+
+class Hand < Interface
   attr_reader :score
 
   CARD_LIMIT = 3
@@ -21,7 +23,7 @@ class Hand
     @cards << card
     @score += 10 if Card::PICTURES.include?(card.value) && (card.value != 'A')
     choice_ace_score if card.value == 'A'
-    @score += card.value.to_i if ('2'..'10').include? card.value
+    @score += card.value.to_i if Card::RANGE.include? card.value
   end
 
   def size
@@ -32,12 +34,4 @@ class Hand
     @cards = []
     @score = 0
   end
-
-  def __str__
-    str = ''
-    @cards.each { |card| str += card.show_card }
-    str += " Текущее кол-во очков - #{@score}"
-  end
-
-  alias show __str__
 end

@@ -18,6 +18,22 @@ class Interface
     gets.to_i
   end
 
+  def __str__
+    str = ''
+    @cards.each do |card|
+      str += " #{card.suit}#{card.value} "
+    end
+    str += " Текущее кол-во очков - #{@score}"
+  end
+
+  alias show __str__
+
+  def __str__
+    str = "Игрок #{name}: #{@hand.show}"
+  end
+
+  alias show_stat __str__
+
   def show_cash(name, cash)
     puts "На счету игрока #{name}: #{cash}"
   end

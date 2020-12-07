@@ -1,6 +1,6 @@
 require_relative 'hand'
 
-class Player
+class Player < Interface
   attr_accessor :hand, :cash, :name
 
   def initialize(name)
@@ -24,9 +24,4 @@ class Player
   def can_take_card?
     @hand.size < Hand::CARD_LIMIT
   end
-
-  def __str__
-    str = "Игрок #{name}: #{@hand.show}"
-  end
-  alias show_stat __str__
 end

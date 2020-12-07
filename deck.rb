@@ -15,7 +15,7 @@ class Deck
 
   def fill_deck
     Card::SUITS.each do |suit|
-      ('2'..'10').each do |value|
+      Card::RANGE.each do |value|
         @cards << Card.new(suit, value)
       end
       Card::PICTURES.each do |value|
